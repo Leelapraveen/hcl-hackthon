@@ -39,7 +39,11 @@ tags = {
 Name = "private-subnet"
 }
 }
- vpc and and private and public subnets was successfully created the vpc out is given bellow
+we using the command
+terraform init  
+terraform plan (.terraform folder was created)
+terraform apply  
+vpc and and private and public subnets was successfully created the vpc out is given bellow
 
 
 aws_vpc.main: Creating...
@@ -49,3 +53,39 @@ aws_subnet.private: Creation complete after 1s [id=subnet-0b3b26ae230de2ee1]
 
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 
+the i started the s3 bucket creation using terraform
+here i take the 
+providers.tf
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "3.66.0"
+    }
+  }
+}
+
+provider "aws" {
+  region     = "YOUR_DESIRED_REGION"  # Set desired region e.g : us-east-1
+  access_key = "YOUR_ACCESS_KEY"
+  secret_key = "YOUR_SECRET_KEY"
+}
+
+
+then i take the main.tf
+
+resource "aws_s3_bucket" "mybucket" {
+  bucket = var.bucketname
+}
+
+then i take the varible.tf as
+variable "bucketname" {
+  default = "YOUR_BUCKET_NAME"
+}
+
+after commpled the code i use the following commands
+terraform init
+terraform plan (when we use this command .terraform folder was created)
+terraform apply 
+
+s3 bucket was successfully created
