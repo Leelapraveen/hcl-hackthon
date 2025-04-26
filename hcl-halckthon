@@ -1,8 +1,15 @@
-i create the eks cluster by using the ubuntu22.04 instance.and install the docker creating the eks cluster by attacing the roles
+I stareted  creating  the eks cluster by using the ubuntu22.04 instance.and install the docker creating the eks cluster by attacing the roles
 1.AmazonEC2ContainerRegistryReadOnly
 AmazonEKSWorkerNodePolicy
 AmazonEKS_CNI_Policy add the node group
+and install the AWS CLI Ater that we configure the aws using four paramaters given bellow
+1.aws access key
+2 Secret access key
+3.region:US-EAST-1
+4.output:JSON
 and update the kube config command "aws eks update-kubeconfig --leelapraveen 
+after successfully created the eks cluster i installed the docker on that ubuntu machime.
+first of all we build the node ja package we run the npm install command  
   then i started the deployment when i started the deployment i got some issues i build ison package i got error main script was missing. 
   the error was given below
 
