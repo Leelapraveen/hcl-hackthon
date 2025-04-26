@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    tools {
+        maven 'MAVEN_HOME'
+        jdk 'JAVA_HOME'
+    }
+    stages {
+        stage('gitchekout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'token', url: 'https://github.com/saketh143Nov/hello.git']]])
+            }
+        }
+        stage ('build') {
+             steps {
+                 sh "mvn clean install"
+                 }
+}
+      stage('Sonarqube') {
+    environment {
+        scannerHome = tool 'SonarQubeScanner'
+    }
+    steps {
+        withSonarQubeEnv('demo') {
+            sh "${scannerHome}/bin/sonar-scanner"
+        }
+        
+    }
+}  
+  stage ('docker build') {
+     steps {
+       sh "docker build . -t hello"
+       }
+       }
+       
+      stage ('deploy') {
+      steps {
+      sh "docker run -p 8090:8080 -d --name hello hello"
+      }
+      }
+      
+    }
+}

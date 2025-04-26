@@ -1,0 +1,5 @@
+FROM tomcat:8.5.47-jdk8-openjdk
+COPY ./target/*.war /usr/local/tomcat/webapps
+EXPOSE 8090
+CMD chmod +X /usr/local/tomcat/bin/startup.sh
+CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
