@@ -39,4 +39,13 @@ tags = {
 Name = "private-subnet"
 }
 }
- vpc and and private and public subnets was successfully created
+ vpc and and private and public subnets was successfully created the vpc out is given bellow
+
+
+aws_vpc.main: Creating...
+aws_vpc.main: Creation complete after 1s [id=vpc-06a43905b651e202f]
+aws_subnet.private: Creating...
+aws_subnet.private: Creation complete after 1s [id=subnet-0b3b26ae230de2ee1]
+
+Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
+
