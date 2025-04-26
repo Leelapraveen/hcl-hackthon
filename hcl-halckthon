@@ -1,0 +1,42 @@
+i create the eks cluster by using the ubuntu22.04 instance.and install the docker creating the eks cluster by attacing the roles
+1.AmazonEC2ContainerRegistryReadOnly
+AmazonEKSWorkerNodePolicy
+AmazonEKS_CNI_Policy add the node group
+and update the kube config command "aws eks update-kubeconfig --leelapraveen 
+  then i started the deployment when i started the deployment i got some issues i build ison package i got error main script was missing. 
+  the error was given below
+
+when i use npm run build i got some error like 
+npm ERR! Missing script: "build"
+npm ERR!
+npm ERR! To see a list of scripts, run:
+npm ERR!   npm run
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2025-04-26T11_52_59_041Z-debug-0.log
+
+
+
+  i sucessfully created the vpc with subnets using terraform
+
+the Main.tf code was
+provider "aws" {
+region = "us-east-1"
+}
+
+resource "aws_vpc" "main" {
+cidr_block = "10.0.0.0/16"
+tags = {
+Name = "main-vpc"
+}
+}
+
+# Private Subnet
+resource "aws_subnet" "private" {
+vpc_id = aws_vpc.main.id
+cidr_block = "10.0.2.0/24"
+tags = {
+Name = "private-subnet"
+}
+}
+ vpc and and private and public subnets was successfully created
